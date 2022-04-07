@@ -1,8 +1,8 @@
 const HttpError = require("../models/http-error");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 const { v4 } = require("uuid");
 
-const DUMMY_PLACES = [
+let DUMMY_PLACES = [
   {
     id: "p1",
     title: "Empire state building",
@@ -17,6 +17,7 @@ const DUMMY_PLACES = [
 ];
 
 const getPlaceById = (req, res, next) => {
+  // #swagger.path = '/api/places/{pid}'
   // #swagger.tags= ['Places']
   // #swagger.description = 'Find a place using Id'
   const placeId = req.params.pid;
@@ -32,25 +33,27 @@ const getPlaceById = (req, res, next) => {
   res.json({ place });
 };
 
-const getPlaceByUserId = (req, res, next) => {
+const getPlacesByUserId = (req, res, next) => {
+  // #swagger.path = '/api/places/user/{uid}'
   // #swagger.tags= ['Places']
   // #swagger.description = 'Find a place using a provided user id'
   const userId = req.params.uid;
 
-  const place = DUMMY_PLACES.find((p) => {
+  const places = DUMMY_PLACES.filter((p) => {
     return p.creator === userId;
   });
 
-  if (!place) {
+  if (!places || places.length === 0) {
     return next(
-      new HttpError("Could not find a place for the provided user id.", 404)
+      new HttpError("Could not find places for the provided user id.", 404)
     );
   }
 
-  res.json({ place });
+  res.json({ places });
 };
 
 const createPlace = (req, res, next) => {
+  // #swagger.path = '/api/places/{pid}'
   // #swagger.tags= ['Places']
   // #swagger.description = 'Create a new place using a provided json'
   const { title, description, coordinates, address, creator } = req.body;
@@ -64,11 +67,46 @@ const createPlace = (req, res, next) => {
   };
 
   DUMMY_PLACES.push(createdPlace);
-  res.status(201).json({place: createdPlace});
+  res.status(201).json({ place: createdPlace });
+};
+
+const patchPlace = (req, res, next) => {
+  // #swagger.path = '/api/places/{pid}'
+  // #swagger.tags= ['Places']
+  // #swagger.description = 'Update only title and description of a Place'
+  const placeId = req.params.pid;
+
+  const { title, description } = req.body;
+
+  const patchedPlace = { ...DUMMY_PLACES.find((p) => p.id === placeId) };
+  const placeIndex = DUMMY_PLACES.findIndex((p) => p.id === placeId);
+
+  if (!patchPlace) {
+    throw new HttpError("Could not patch a place for the provided pid.", 404);
+  }
+
+  patchedPlace.title = title;
+  patchedPlace.description = description;
+
+  DUMMY_PLACES[placeIndex] = patchedPlace;
+
+  res.status(200).json({ patchedPlace });
+};
+
+const deletePlace = (req, res, next) => {
+  // #swagger.path = '/api/places/{pid}'
+  // #swagger.tags= ['Places']
+  // #swagger.description = 'Delete a place using place id'
+  const placeId = req.params.pid;
+  DUMMY_PLACES = DUMMY_PLACES.filter((p) => p.id !== placeId);
+
+  res.status(200).json({ message: "Deleted place!" });
 };
 
 module.exports = {
   getPlaceById,
-  getPlaceByUserId,
+  getPlacesByUserId,
   createPlace,
+  patchPlace,
+  deletePlace,
 };

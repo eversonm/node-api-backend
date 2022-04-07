@@ -30,6 +30,59 @@
             "description": "OK"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Places"
+        ],
+        "description": "Update only title and description of a Place",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Places"
+        ],
+        "description": "Delete a place using place id",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/places/user/{uid}": {
@@ -53,7 +106,7 @@
         }
       }
     },
-    "/api/places": {
+    "/api/places/": {
       "post": {
         "tags": [
           "Places"
