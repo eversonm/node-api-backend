@@ -106,12 +106,26 @@
         }
       }
     },
-    "/api/places/": {
+    "/api/users/": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Find all users",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/signup": {
       "post": {
         "tags": [
-          "Places"
+          "Users"
         ],
-        "description": "Create a new place using a provided json",
+        "description": "Create a new user using name, email and password",
         "parameters": [
           {
             "name": "body",
@@ -119,19 +133,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "name": {
                   "example": "any"
                 },
-                "description": {
+                "email": {
                   "example": "any"
                 },
-                "coordinates": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "creator": {
+                "password": {
                   "example": "any"
                 }
               }
@@ -141,6 +149,36 @@
         "responses": {
           "201": {
             "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Log in a user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
