@@ -19,9 +19,13 @@ let DUMMY_PLACES = [
 ];
 
 const getPlaceById = (req, res, next) => {
-  // #swagger.path = '/api/places/{pid}'
   // #swagger.tags= ['Places']
   // #swagger.description = 'Find a place using Id'
+  /* #swagger.responses[200] = { 
+      schema: { 
+        $ref: "#/definitions/Places" 
+      },
+    } */
   const placeId = req.params.pid;
 
   const place = DUMMY_PLACES.find((p) => {

@@ -13,9 +13,14 @@ const DUMMY_USERS = [
 ];
 
 const getAllUsers = (req, res, next) => {
-  // #swagger.path = '/api/users/{pid}'
   // #swagger.tags= ['Users']
   // #swagger.description = 'Find all users'
+  /* #swagger.responses[200] = { 
+      schema: { 
+        $ref: "#/definitions/Users" 
+      },
+    } */
+
   res.status(200).json({ users: DUMMY_USERS });
 };
 
@@ -26,7 +31,10 @@ const signup = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    throw new HttpError("Invalids inputs passed, please check your user data.", 422);
+    throw new HttpError(
+      "Invalids inputs passed, please check your user data.",
+      422
+    );
   }
 
   const { name, email, password } = req.body;
@@ -50,7 +58,7 @@ const signup = (req, res, next) => {
 };
 
 const login = (req, res, next) => {
-  // #swagger.path = '/api/users/'
+  // #swagger.path = '/api/users/something/'
   // #swagger.tags= ['Users']
   // #swagger.description = 'Log in a user'
   const { email, password } = req.body;
