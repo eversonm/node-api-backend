@@ -1,5 +1,5 @@
-const { v4: uuidv4 } = require("uuid");
 const { v4 } = require("uuid");
+const { validationResult } = require("express-validator");
 
 const HttpError = require("../models/http-error");
 
@@ -54,9 +54,16 @@ const getPlacesByUserId = (req, res, next) => {
 };
 
 const createPlace = (req, res, next) => {
-  // #swagger.path = '/api/places/{pid}'
+  // #swagger.path = '/api/places/'
   // #swagger.tags= ['Places']
   // #swagger.description = 'Create a new place using a provided json'
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    throw new HttpError("Invalids inputs passed, please check your data.", 422);
+  }
+
   const { title, description, coordinates, address, creator } = req.body;
   const createdPlace = {
     id: v4(),
@@ -75,6 +82,13 @@ const patchPlace = (req, res, next) => {
   // #swagger.path = '/api/places/{pid}'
   // #swagger.tags= ['Places']
   // #swagger.description = 'Update only title and description of a Place'
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    throw new HttpError("Invalids inputs passed, please check your data.", 422);
+  }
+
   const placeId = req.params.pid;
 
   const { title, description } = req.body;
@@ -99,6 +113,11 @@ const deletePlace = (req, res, next) => {
   // #swagger.tags= ['Places']
   // #swagger.description = 'Delete a place using place id'
   const placeId = req.params.pid;
+  
+  if (!DUMMY_PLACES.find((p) => p.id === placeId)) {
+    throw new HttpError("Could not find a place for that id.", 404);
+  }
+
   DUMMY_PLACES = DUMMY_PLACES.filter((p) => p.id !== placeId);
 
   res.status(200).json({ message: "Deleted place!" });

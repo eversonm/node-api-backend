@@ -106,6 +106,45 @@
         }
       }
     },
+    "/api/places/newPlace": {
+      "post": {
+        "tags": [
+          "Places"
+        ],
+        "description": "Create a new place using a provided json",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "coordinates": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "creator": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
     "/api/users/": {
       "get": {
         "tags": [
