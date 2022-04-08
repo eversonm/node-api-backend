@@ -2,7 +2,7 @@
 *Node.js &amp; Express.js - Building a REST API*
 
 ## Modules
-[axios](https://www.npmjs.com/package/axios)
+[axios](https://www.npmjs.com/package/axios) <br>
 [express](https://www.npmjs.com/package/express) <br>
 [express-validator](https://www.npmjs.com/package/express-validator) <br>
 [wagger-autogen](https://www.npmjs.com/package/swagger-autogen)<br>
