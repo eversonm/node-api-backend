@@ -2,6 +2,7 @@
 *Node.js &amp; Express.js - Building a REST API*
 
 ## Modules
+[axios](https://www.npmjs.com/package/axios)
 [express](https://www.npmjs.com/package/express) <br>
 [express-validator](https://www.npmjs.com/package/express-validator) <br>
 [wagger-autogen](https://www.npmjs.com/package/swagger-autogen)<br>
@@ -11,7 +12,7 @@
 [nodemon](https://www.npmjs.com/package/nodemon)<br>
 
 ### Swagger docs link
-<b>http://localhost:5000</b>
+<b>http://localhost:5000/</b>
 
 ### Update swagger docs
 *npm run swagger-autogen*
