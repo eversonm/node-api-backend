@@ -191,9 +191,6 @@
                 },
                 "password": {
                   "example": "any"
-                },
-                "places": {
-                  "example": "any"
                 }
               }
             }
@@ -241,10 +238,6 @@
     "Users": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "u1"
-        },
         "name": {
           "type": "string",
           "example": "Jhon Doe"
@@ -256,16 +249,22 @@
         "password": {
           "type": "string",
           "example": "test12pass"
+        },
+        "places": {
+          "type": "array",
+          "example": [
+            "idPlace1",
+            "idPlace2"
+          ],
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
     "Places": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "p1"
-        },
         "title": {
           "type": "string",
           "example": "Empire state building"

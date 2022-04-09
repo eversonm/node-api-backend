@@ -1,4 +1,3 @@
-const { v4 } = require("uuid");
 const { validationResult } = require("express-validator");
 
 const HttpError = require("../models/http-error");
@@ -40,7 +39,7 @@ const signup = async (req, res, next) => {
     );
   }
 
-  const { name, email, password, places } = req.body;
+  const { name, email, password } = req.body;
 
   let existingUser;
   try {
@@ -65,7 +64,7 @@ const signup = async (req, res, next) => {
     image:
       "https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Folders-OS-User-No-Frame-Metro-icon.png",
     password,
-    places,
+    places: [],
   });
 
   try {

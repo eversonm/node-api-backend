@@ -27,13 +27,12 @@ const doc = {
 
   definitions: {
     Users: {
-      id: "u1",
       name: "Jhon Doe",
       email: "test@gmail.com",
       password: "test12pass",
+      places: ["idPlace1", "idPlace2"]
     },
     Places: {
-      id: "p1",
       title: "Empire state building",
       description: "One of the most famous sky scrapers in the world!",
       location: {
