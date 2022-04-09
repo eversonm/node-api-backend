@@ -11,6 +11,7 @@
 # production
 /build
 config-key.js
+mongodb-keys.js
 
 # misc
 .DS_Store

@@ -191,6 +191,9 @@
                 },
                 "password": {
                   "example": "any"
+                },
+                "places": {
+                  "example": "any"
                 }
               }
             }
