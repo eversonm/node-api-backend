@@ -13,7 +13,7 @@
 [nodemon](https://www.npmjs.com/package/nodemon)<br>
 
 ### Swagger docs link
-<b>http://localhost:5000/</b>
+<b>http://localhost:5000/doc</b>
 
 ### Update swagger docs
 *npm run swagger-autogen*

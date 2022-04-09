@@ -23,7 +23,7 @@ app.use("/api/places", placesRoutes);
 
 app.use("/api/users", usersRoutes);
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route!", 404);
