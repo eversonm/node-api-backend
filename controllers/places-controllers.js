@@ -121,9 +121,9 @@ const createPlace = async (req, res, next) => {
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    await createdPlace.save({ session: sess });
+    await createdPlace.save({ session: sess , validateModifiedOnly: true });
     user.places.push(createdPlace);
-    await user.save({ session: sess }); //handle all mongoDB code to save and store a document
+    await user.save({ session: sess , validateModifiedOnly: true }); //handle all mongoDB code to save and store a document
     await sess.commitTransaction();
   } catch (err) {
     console.log(err);
