@@ -121,9 +121,9 @@ const createPlace = async (req, res, next) => {
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    await createdPlace.save({ session: sess , validateModifiedOnly: true });
+    await createdPlace.save({ session: sess, validateModifiedOnly: true });
     user.places.push(createdPlace);
-    await user.save({ session: sess , validateModifiedOnly: true }); //handle all mongoDB code to save and store a document
+    await user.save({ session: sess, validateModifiedOnly: true }); //handle all mongoDB code to save and store a document
     await sess.commitTransaction();
   } catch (err) {
     console.log(err);
@@ -193,8 +193,9 @@ const deletePlace = async (req, res, next) => {
   try {
     place = await Place.findById(placeId).populate("creator");
   } catch (err) {
+    console.log(err);
     const error = new HttpError(
-      "Something went wrong! Could not delete place",
+      "Something went wrong! Could not delete place asasas",
       500
     );
     return next(error);
@@ -211,11 +212,13 @@ const deletePlace = async (req, res, next) => {
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    await place.remove({ session: sess });
+    await place.remove({ session: sess, validateModifiedOnly: true }); // to avoid error
+    // _id: ValidatorError: Error, expected `_id` to be unique.
     place.creator.places.pull(place);
-    await place.creator.save({ session: sess });
+    await place.creator.save({ session: sess, validateModifiedOnly: true });
     await sess.commitTransaction();
   } catch (err) {
+    console.log(err);
     const error = new HttpError(
       "Something went wrong! Could not delete place",
       500
