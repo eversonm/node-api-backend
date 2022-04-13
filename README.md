@@ -3,9 +3,11 @@
 
 ## Modules
 [axios](https://www.npmjs.com/package/axios) <br>
+[bcrypt](https://www.npmjs.com/package/bcrypt) <br>
 [cors](https://www.npmjs.com/package/cors)<br>
 [express](https://www.npmjs.com/package/express) <br>
 [express-validator](https://www.npmjs.com/package/express-validator) <br>
+[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) <br>
 [mongoose-unique-validator](https://www.npmjs.com/package/mongoose-unique-validator)<br>
 [multer](https://www.npmjs.com/package/multer) <br>
 [swagger-autogen](https://www.npmjs.com/package/swagger-autogen)<br>

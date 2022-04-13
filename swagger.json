@@ -176,7 +176,17 @@
           "Users"
         ],
         "description": "Create a new user using name, email and password",
+        "consumes": [
+          "multipart/form-data"
+        ],
         "parameters": [
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "Some description..."
+          },
           {
             "name": "body",
             "in": "body",
