@@ -6,9 +6,10 @@
 [cors](https://www.npmjs.com/package/cors)<br>
 [express](https://www.npmjs.com/package/express) <br>
 [express-validator](https://www.npmjs.com/package/express-validator) <br>
-[wagger-autogen](https://www.npmjs.com/package/swagger-autogen)<br>
-[swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)<br>
 [mongoose-unique-validator](https://www.npmjs.com/package/mongoose-unique-validator)<br>
+[multer](https://www.npmjs.com/package/multer) <br>
+[swagger-autogen](https://www.npmjs.com/package/swagger-autogen)<br>
+[swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)<br>
 
 ## Dev module
 [nodemon](https://www.npmjs.com/package/nodemon)<br>
