@@ -2,7 +2,7 @@ const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const secret_key = require("../jwtoken"); //contains a secret_key
+const secret_key = process.env.JWT_KEY;
 const HttpError = require("../models/http-error");
 const User = require("../models/user");
 

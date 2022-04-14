@@ -9,17 +9,12 @@ const swaggerFile = require("./swagger.json");
 
 const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
-const {
-  USER_NAME,
-  PASSWORD,
-  CLUSTER_NAME,
-  DB_NAME,
-} = require("./mongodb-keys"); //contains credentials to access mongodb atlas
+
 const HttpError = require("./models/http-error");
 
 const app = express();
 
-const url = `mongodb+srv://${USER_NAME}:${PASSWORD}@${CLUSTER_NAME}/${DB_NAME}?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 app.use(express.json());
 

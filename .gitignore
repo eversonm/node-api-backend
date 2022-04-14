@@ -13,6 +13,7 @@
 config-key.js
 mongodb-keys.js
 jwtoken.js
+nodemon.json
 
 # misc
 .DS_Store
